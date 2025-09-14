@@ -1,0 +1,188 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: #ff9800;
+    padding: 5px;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+}   
+
+main {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    padding-top: 100px; 
+}
+
+.contenidor {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 600px;
+    padding: 20px;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px;
+}
+
+#afegir-tasca {
+    background-color: #03a9f4;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+}
+
+#afegir-tasca:hover {
+    background-color: #0288d1;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+table tr {
+    display: grid;
+    grid-template-columns: repeat(2, 65% 35%);
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    font-size: 14px;
+}
+
+table td .gestionar-tasca {
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+table td .gestionar-tasca:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.modificar-tasca {
+    background-color: #4CAF50;
+}
+
+.eliminar-tasca {
+    background-color: #ff4d4d;
+}
+
+footer {
+    background-color: #03a9f4;
+    bottom: 0;
+    padding: 10px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+footer p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .contenidor {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        display: none;
+    }
+
+    table td {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: left;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+    }
+
+    .gestionar-tasca {
+        display: inline-block;
+        margin-top: 5px;
+    }
+}

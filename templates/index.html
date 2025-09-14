@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de tasques</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/gestortasques.png') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Gestor de tasques</h1>
+    </header>
+    <main>
+        <div class="contenidor">
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="text" id="categoria" name="categoria" placeholder="Escriu la categoria" required>
+                <input type="text" id="tasca" name="tasca" placeholder="Escriu la tasca" required>
+                <button id="afegir-tasca" type="submit">Afegir</button>
+            </form>
+            {% for categoria in tasques %}
+            <h2>{{ categoria.nom }}</h2>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Tasca</th>
+                        <th>Gestió</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if categoria.tasques %}
+                    {% for tasca in categoria.tasques %}
+                    <tr>
+                        <td data-label="Tasca">{{ tasca.tasca }}</td>
+                        <td data-label="Gestió">
+                            <a href="#" onclick="modifica('{{ categoria.nom }}', '{{ tasca.tasca }}', '{{ tasca.id }}')"
+                                class="gestionar-tasca modificar-tasca">Modifica</a>
+                            <a href="{{ url_for('eliminar_tasca', id_tasca=tasca.id) }}"
+                                class="gestionar-tasca eliminar-tasca">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="2">No hi ha tasques en aquesta categoria.</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
+        <footer>
+            <p>&copy; Tots els drets reservats 2025 - Jeiron</p>
+        </footer>
+
+        <script>
+            function modifica(categoria, tasca, id) {
+                document.getElementById("categoria").value = categoria;
+                document.getElementById("tasca").value = tasca;
+
+                const formulari = document.querySelector("form");
+                formulari.action = "/modificar_tasca/" + id;
+            }
+        </script>
+    </main>
+</body>
+
+</html>
