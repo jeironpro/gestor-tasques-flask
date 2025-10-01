@@ -24,7 +24,7 @@
                 <button id="afegir-tasca" type="submit">Afegir</button>
             </form>
             {% for categoria in tasques %}
-            <h2>{{ categoria.nom }}</h2>
+            <h2>{{ categoria.nom }} <a href="{{ url_for('eliminar_categoria', id_categoria=categoria.id_categoria) }}" class="eliminar-categoria"><span class="material-symbols-outlined">delete</span></a></h2>
             <table border="1" cellpadding="5" cellspacing="0">
                 <thead>
                     <tr>
@@ -38,10 +38,8 @@
                     <tr>
                         <td data-label="Tasca">{{ tasca.tasca }}</td>
                         <td data-label="Gestió">
-                            <a href="#" onclick="modifica('{{ categoria.nom }}', '{{ tasca.tasca }}', '{{ tasca.id }}')"
-                                class="gestionar-tasca modificar-tasca">Modifica</a>
-                            <a href="{{ url_for('eliminar_tasca', id_tasca=tasca.id) }}"
-                                class="gestionar-tasca eliminar-tasca">Eliminar</a>
+                            <a href="#" onclick="modifica('{{ categoria.nom }}', '{{ tasca.tasca }}', '{{ tasca.id }}')" class="gestionar-tasca modificar-tasca"><span class="material-symbols-outlined">edit</span></a>
+                            <a href="{{ url_for('eliminar_tasca', id_tasca=tasca.id) }}" class="gestionar-tasca eliminar-tasca"><span class="material-symbols-outlined">delete</span></a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -55,7 +53,7 @@
             {% endfor %}
         </div>
         <footer>
-            <p>&copy; Tots els drets reservats 2025 - Jeiron</p>
+            <p>&copy; Tots els drets reservats 2025 - JeironPro</p>
         </footer>
 
         <script>
